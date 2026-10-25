@@ -1,0 +1,18 @@
+services:
+  backend:
+    image: thien505/mernbackend:latest
+    env_file:
+      - ./.env
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+  frontend:
+    image: thien505/mernfrontend:latest
+    environment:
+      BACKEND_URL: http://backend:5000
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
