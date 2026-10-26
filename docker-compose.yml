@@ -3,15 +3,15 @@ services:
     build: ./server
     image: mernbackend:1.0
     env_file:
-      - ./.env
+    - ./.env
     ports:
-      - "5000:5000"
+    - "5000:5000"
   frontend:
     build: ./client
     image: mernfrontend:1.0
     environment:
       BACKEND_URL: http://backend:5000
     ports:
-      - "3000:80"
+    - "3000:80"
     depends_on:
-      - backend
+    - backend
